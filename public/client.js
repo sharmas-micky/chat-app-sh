@@ -10,7 +10,7 @@ do {
 
 
 textarea.addEventListener('keyup',(e)=>{
-    if(e.key === 'Enter'){
+    if(e.key === 'Enter' && e.target.value !== ''){
         sendMessage(e.target.value)
     }
 })
@@ -40,14 +40,20 @@ function appendMessage(msg,type) {
         <h4>${msg.user}</h4>
         <p>${msg.message}</p>
     `
-    mainDiv.innerHTML = markup
-    messagearea.appendChild(mainDiv)
+    if (msg.message != '') {
+        mainDiv.innerHTML = markup
+        messagearea.appendChild(mainDiv)
+    }
+    // mainDiv.innerHTML = markup
+    // messagearea.appendChild(mainDiv)
 }
 
 // receive the message
 
 socket.on('message',(msg)=>{
     appendMessage(msg, 'inco')
+    var audio = new Audio('audio.mp3');
+    audio.play();
     scrollTobottom()
 })
 
