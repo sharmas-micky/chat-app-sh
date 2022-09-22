@@ -44,8 +44,6 @@ function appendMessage(msg,type) {
         mainDiv.innerHTML = markup
         messagearea.appendChild(mainDiv)
     }
-    // mainDiv.innerHTML = markup
-    // messagearea.appendChild(mainDiv)
 }
 
 // receive the message
